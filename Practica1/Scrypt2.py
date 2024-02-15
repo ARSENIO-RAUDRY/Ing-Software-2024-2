@@ -49,22 +49,22 @@ class Node:
     def preorder(self):
         nodes = [self.value]
         if self.left is not None:
-            nodes.append(self.left.preorder())
+            nodes.extend(self.left.preorder())
 
         if self.right is not None:
-            nodes.append(self.right.preorder())
+            nodes.extend(self.right.preorder())
 
         return nodes
 
     def inorder(self):
         nodes = []
         if self.left is not None:
-            nodes.append(self.left.inorder())
+            nodes.extend(self.left.inorder())
 
         nodes.append(self.value)
 
         if self.right is not None:
-            nodes.append(self.right.inorder())
+            nodes.extend(self.right.inorder())
 
         return nodes
 
@@ -72,17 +72,17 @@ class Node:
         nodes = []
 
         if self.left is not None:
-            nodes.append(self.left.postorder())
+            nodes.extend(self.left.postorder())
 
         if self.right is not None:
-            nodes.append(self.right.postorder())
+            nodes.extend(self.right.postorder())
 
         nodes.append(self.value)
 
         return nodes
 
 
-def __name__ == '__main__':
+if __name__ == '__main__':
     string = input("Ingresa una secuencia de los caracteres 'U' o 'D': ")
 
     while not validate_string(string):
