@@ -1,4 +1,9 @@
 def count_valleys(string):
+    """
+    Funcion encargada de contar los valles en el string
+    :param string: secuencia de 'D' y 'U'
+    :return: numero de valles
+    """
     counter = 0
     is_valley = False
     valleys = 0
@@ -18,21 +23,43 @@ def count_valleys(string):
     return valleys
 
 
+
 def validate_string(string):
+
+     """
+    Funcion encargada de que la cadena solo tenga caracteres que sean 'D' o 'U'
+    :param string: secuencia de 'D' y 'U'
+    :return: numero de valles
+    """
+    
     for character in string:
         if not (character == 'D' or character == 'U'):
             return False
     return True
 
 class Node:
+        """    Clase que representa el nodo de un arbol    """
 
     def __init__(self, value):
+    """
+    Constructor del nodo
+    :param value: Valor que guardara el nodo
+    :atribute value: Valor que guarda el nodo
+    :attribute left: Hijo izquierdo del nodo
+    :attribute right: Hijo derecho del nodo
+    :attribute daddy: Padre del nodo
+    """
         self.value = value
         self.left = None
         self.right = None
         self.daddy = None
 
     def insert(self, value):
+
+     """
+    Inserta un nodo al arbol
+    :param value: Valor que guardara el nuevo nodo
+    """
         if value < self.value:
             if self.left is None:
                 self.left = Node(value)
@@ -47,6 +74,10 @@ class Node:
                 self.right.insert(value)
 
     def preorder(self):
+    """
+    Hace un recorrido en preorden
+    :return: Lista del preorden
+    """
         nodes = [self.value]
         if self.left is not None:
             nodes.extend(self.left.preorder())
@@ -57,6 +88,10 @@ class Node:
         return nodes
 
     def inorder(self):
+    """
+    Hace un recorrido en inorden
+    :return: Lista del inorden
+    """
         nodes = []
         if self.left is not None:
             nodes.extend(self.left.inorder())
@@ -69,6 +104,10 @@ class Node:
         return nodes
 
     def postorder(self):
+    """
+    Hace un recorrido en postorden
+    :return: Lista del postorden
+    """
         nodes = []
 
         if self.left is not None:

@@ -1,0 +1,16 @@
+--Activar el ambiente--
+Una vez dentro de path/to/venv/bin ejecutar
+
+source activate
+
+
+--Scrypts--
+El Scrypt1 está incompleto por, hay aspectos de su funcionamiento que son incorrectos a causa de una mala distribución de tiempo
+
+--Paquetes pip para instalar dentro del ambiente--
+
+python3 -m pip install numpy
+
+python3 -m pip install matplotli
+
+python3 -m pip install PyQt5
