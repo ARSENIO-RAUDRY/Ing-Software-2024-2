@@ -29,3 +29,4 @@ if __name__ == '__main__':
     ct = cipher(passwd)
     m = sha256(ct).hexdigest()
     print(validate(passwd, m))
+
