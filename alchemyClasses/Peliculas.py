@@ -10,14 +10,11 @@ class Peliculas(db.Model):
     duracion = Column(Integer)
     inventario = Column(Integer)
 
-    def __init__(self, nombre, apellido_pat, apellido_mat, password, email, profile_picture=None, superuser):
+    def __init__(self, nombre, genero, duracion, inventario):
         self.nombre = nombre
-        self.apellido_pat = apellido_pat
-        self.apellido_mat = apellido_mat
-        self.password = password
-        self.email = email
-        self.profile_picture = profile_picture
-        self.superuser = superuser
+        self.genero = genero
+        self.duracion = duracion
+        self.inventario = inventario
     
     def __str__(self):
-        return f'Id Usuario: {self.id_usuario}\nNombre:{self.nombre}\nApellido Paterno:{self.apellido_pat}\nApellido Materno:{self.apellido_mat}\nCorreo:{self.email}'
+        return f'Id Pelicula: {self.id_pelicula}\nNombre:{self.nombre}\nGenero:{self.genero}\nDuracion:{self.duracion}\nInventario:{self.inventario}'
