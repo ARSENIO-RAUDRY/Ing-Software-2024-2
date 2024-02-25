@@ -4,13 +4,13 @@ from alchemyClasses import db
 
 class Peliculas(db.Model):
     __tablename__ = 'peliculas'
-    id_pelicula = Column(Integer, primary_key = True)
+    idPelicula = Column(Integer, primary_key = True)
     nombre = Column(String(200))
     genero = Column(String(45))
     duracion = Column(Integer)
     inventario = Column(Integer)
 
-    def __init__(self, nombre, genero, duracion, inventario):
+    def __init__(self, nombre, genero=None, duracion=None, inventario=5):
         self.nombre = nombre
         self.genero = genero
         self.duracion = duracion

@@ -6,7 +6,7 @@ def get_usuarios():
         print(f'{usuario}\n')
 
 def get_usuario(id_usuario):
-    return Usuarios.query.filter(Usuarios.id_usuario == id_usuario).first()
+    return Usuarios.query.filter(Usuarios.idUsuario == id_usuario).first()
 
 def cambia_nombre_usuario(id_usuario, nuevo_nombre):
     usuario = get_usuario(id_usuario)

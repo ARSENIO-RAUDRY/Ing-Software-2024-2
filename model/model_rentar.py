@@ -2,12 +2,12 @@ from alchemyClasses.Rentar import Rentar
 from alchemyClasses import db
 import datetime
 
-def get_rentar():
+def get_rentas():
     for renta in Rentar.query.all():
         print(f'{renta}\n')
 
 def get_rentar(id_renta):
-    return Rentar.query.filter(Rentar.id_rentar == id_renta).first()
+    return Rentar.query.filter(Rentar.idRentar == id_renta).first()
 
 def genera_nueva_fecha():
     anio = 0

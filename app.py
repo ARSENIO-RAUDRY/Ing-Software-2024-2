@@ -16,7 +16,7 @@ from hashlib import sha256
 #<dialecto>+<driver>://<usuario>:<passwd>@localhost:3306/<db>
 #mysql+pymysql://lab:Developer123!@localhost:3306/lab_ing_soft
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ferfong:Developer123!@localhost:3306/ing_soft'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://lab:Developer123!@localhost:3306/lab_ing_software'
 app.config.from_mapping(
     SECRET_KEY='dev'
 )
@@ -103,7 +103,7 @@ if __name__ == '__main__':
 
             elif tabla == 3:
                  id_renta = int(input("Inserte el ID de la renta"))
-                 print(f'{get_renta(id_renta)}\n')
+                 print(f'{get_rentar(id_renta)}\n')
 
             
         elif operacion == 3:

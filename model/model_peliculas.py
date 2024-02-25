@@ -6,7 +6,7 @@ def get_peliculas():
         print(f'{pelicula}\n')
 
 def get_pelicula(id_pelicula):
-    return Peliculas.query.filter(Peliculas.id_pelicula == id_pelicula).first()
+    return Peliculas.query.filter(Peliculas.idPelicula == id_pelicula).first()
 
 def cambia_nombre_pelicula(id_pelicula, nuevo_nombre):
     pelicula = get_pelicula(id_pelicula)
