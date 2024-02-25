@@ -95,8 +95,6 @@ if __name__ == '__main__':
                  id_usuario = int(input("Inserte el ID del usuario"))
                  print(f'{get_usuario(id_usuario)}\n')
 
-                 get_usuarios()
-
             elif tabla == 2:
                  id_pelicula = int(input("Inserte el ID de la pelicula"))
                  print(f'{get_pelicula(id_pelicula)}\n')
