@@ -8,7 +8,7 @@ def get_peliculas:
 def get_pelicula(id_pelicula):
     return Peliculas.query.filter(Peliculas.id_pelicula == id_pelicula).first()
 
-def cambia_nombre(id_pelicula, nuevo_nombre):
+def cambia_nombre_pelicula(id_pelicula, nuevo_nombre):
     pelicula = get_pelicula(id_pelicula)
     if pelicula != None:
         pelicula.nombre = nuevo_nombre
@@ -26,7 +26,7 @@ def elimina_pelicula(id_pelicula):
     else:
         return False
 
-def elimina_todos_las_peliculas():
+def elimina_todas_las_peliculas():
     peliculas = Peliculas.query.all()
     for pelicula in peliculas:
         db.session.delete(pelicula)

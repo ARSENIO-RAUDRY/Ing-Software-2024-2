@@ -63,7 +63,7 @@ def elimina_renta(id_renta):
     else:
         return False
 
-def elimina_todos_las_rentas():
+def elimina_todas_las_rentas():
     rentar = Rentar.query.all()
     for renta in rentar:
         db.session.delete(renta)

@@ -8,7 +8,7 @@ def get_usuarios:
 def get_usuario(id_usuario):
     return Usuarios.query.filter(Usuarios.id_usuario == id_usuario).first()
 
-def cambia_nombre(id_usuario, nuevo_nombre):
+def cambia_nombre_usuario(id_usuario, nuevo_nombre):
     usuario = get_usuario(id_usuario)
     if usuario != None:
         usuario.nombre = nuevo_nombre

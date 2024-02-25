@@ -2,11 +2,17 @@ from flask import Flask
 from sqlalchemy import and_, or_
 
 from alchemyClasses import db
-from alchemyClasses.Alumno import Alumno
+from alchemyClasses.Usuarios import Usuario
+from alchemyClasses.Peliculas import Peliculas
+from alchemyClasses.Rentar import Rentar
+
 from cryptoUtils.CryptoUtils import cipher
+
+from model.model_usuarios import *
+from model.model_peliculas import *
+from model.model_rentar import *
 from hashlib import sha256
 
-from model.model_alumno import borra_alumno
 
 #mysql+pymysql://ferfong:Developer123!@localhost:3306/ing_soft
 #<dialecto>+<driver>://<usuario>:<passwd>@localhost:3306/<db>
@@ -20,25 +26,203 @@ db.init_app(app)
 
 if __name__ == '__main__':
     with app.app_context():
-        """for alumno in Alumno.query.all(): # Select * from alumno
-            print(alumno)"""
+        print(" __  __            _    _ \n|  \\/  |          | |  | |\n| \\  / | ___ _ __ | |  | |\n| |\\/| |/ _ \\ '_ \| |  | |\n| |  | |  __/ | | | |__| |\n|_|  |_|\___|_| |_|\\____/ ")
 
-        """for alumno in Alumno.query.filter(and_(Alumno.nombre == 'Fer', Alumno.num_cta == 313320679)): #Un booleano a evaluar.
-            print(f"Nombre de alumno con cta 313320679 es: {alumno.nombre}")"""
+        print("Operaciones disponibles:")
+        print("(1) Consultar los registros de una tabla")
+        print("(2) Filtrar los registros de una tabla por Id")
+        print("(3) Actualizar el nombre de un registro o modificar la fecha de una renta")
+        print("(4) Eliminar un registro por Id o todos los registros")
 
-        #Create
-        """valeria = Alumno('Valeria', 'Ramirez', 319311918, apMat=None, password=sha256(cipher("Developer123#")).hexdigest())
-        db.session.add(valeria)
-        db.session.commit()"""
-        #Update
-        #Primero tenemos que buscar el objeto que queremos.
-        #Ya que lo tengo, entonces cambio el atributo.
-        #Y entonces hago el commit.
-        #fer = Alumno.query.filter(Alumno.nombre == 'Fernando').first()
-        #print(type(fer))
-        #fer.nombre = "Fer"
-        #fer.ap_mat = "Baeza"
-        #db.session.commit()
-        #Delete
-        borra_alumno(313320679)
-        print("Borrado con éxito!")
+        operacion = 0
+
+        while(True):
+            try:
+                operacion = input("Elija la operacion a realizar: ")
+                if operacion not in [1,2,3,4]:
+                    raise ValueError
+                else: break
+            except ValueError:
+                print("Ingrese una opcion valida:")
+
+
+        if operacion == 1:
+            print("Tablas existentes en la base:")
+            print("(1) Tabla de Usuarios")
+            print("(2) Tabla de Peliculas")
+            print("(3) Tabla de Rentas")
+
+            tabla =0
+
+            while(True):
+                try:
+                    tabla = input("Elija la tabla a consultar:")
+                    if tabla not in [1,2,3]:
+                        raise ValueError
+                    else: break
+                except ValueError:
+                    print("Ingrese una tabla valida")
+
+             if tabla == 1:
+                 print("Tabla de usuarios")
+                 get_usuarios()
+
+             elif tabla == 2:
+                 print("Tabla de peliculas")
+                 get_peliculas()
+
+             elif tabla == 3:
+                 print("Tabla de rentas")
+                 get_rentas()
+
+                 
+
+        elif operacion == 2:
+            print("Tablas existentes en la base:")
+            print("(1) Tabla de Usuarios")
+            print("(2) Tabla de Peliculas")
+            print("(3) Tabla de Rentas")
+
+            tabla =0
+
+            while(True):
+                try:
+                    tabla = input("Elija la tabla del registro a consultar:")
+                    if tabla not in [1,2,3]:
+                        raise ValueError
+                    else: break
+                except ValueError:
+                    print("Ingrese una tabla valida")
+
+             if tabla == 1:
+                 id = int(input("Inserte el ID del usuario"))
+                 print(f'{get_usuario{id}}\n')
+
+                 get_usuarios()
+
+             elif tabla == 2:
+                 id = int(input("Inserte el ID de la pelicula"))
+                 print(f'{get_pelicula{id}}\n')
+
+             elif tabla == 3:
+                 id = int(input("Inserte el ID de la renta"))
+                 print(f'{get_renta{id}}\n')
+
+            
+        elif operacion == 3:
+            print("Tablas existentes en la base:")
+            print("(1) Tabla de Usuarios")
+            print("(2) Tabla de Peliculas")
+            print("(3) Tabla de Rentas")
+
+            tabla =0
+
+            while(True):
+                try:
+                    tabla = input("Elija la tabla del registro que se quiera cambiar el nombre (fecha en caso de Rentas):")
+                    if tabla not in [1,2,3]:
+                        raise ValueError
+                    else: break
+                except ValueError:
+                    print("Ingrese una tabla valida")
+
+             if tabla == 1:
+                 id_usuario = int(input("Inserte el ID del usuario"))
+                 nombre = input("Ingresa el nuevo nombre del Usuario:")
+                 if cambia_nombre_usuario(id_usuario, nombre) == False:
+                     print("Entrada no valida, nombre sin cambiar")
+
+                 else:
+                     print("Nombre cambiado")
+
+             elif tabla == 2:
+                 id_pelicula = int(input("Inserte el ID de la pelicula"))
+                 nombre = input("Ingresa el nuevo nombre de la Pelicula:")
+                 if cambia_nombre_pelicula(id_pelicula, nombre) == False:
+                     print("Entrada no valida, nombre sin cambiar")
+
+                 else:
+                     print("Nombre cambiado")
+
+             elif tabla == 3:
+                 id_renta = int(input("Inserte el ID de la renta"))
+                 nueva_fecha = genera_nueva_fecha()
+                 if cambia_fecha(id_renta, nueva_fecha) == False:
+                     print("Entrada no valida, Fecha sin cambiar")
+
+                 else:
+                     print("Fecha cambiado")
+
+            
+        elif operacion == 4:
+            print("Que desea eliminar?")
+            print("(1) Un registro")
+            print("(2) Todos los registros de una tabla")
+
+            eliminar = 0
+
+            while(True):
+                try:
+                    eliminar = int(input("Inserte la opcion"))
+                    if eliminar not in [1,2]:
+                        raise ValueError
+                    else: break
+                except ValueError:
+                    print("Elija una opción valida")
+
+            if eliminar == 1:
+                print("Tablas existentes en la base:")
+                print("(1) Tabla de Usuarios")
+                print("(2) Tabla de Peliculas")
+                print("(3) Tabla de Rentas")
+
+                tabla =0                
+                while(True):
+                    try:
+                        tabla = input("Elija la tabla del registro que se quiera cambiar el nombre (fecha en caso de Rentas):")
+                        if tabla not in [1,2,3]:
+                            raise ValueError
+                        else: break
+                    except ValueError:
+                        print("Ingrese una tabla valida")
+
+                 if table == 1:
+                     id_usuario = int(input("Id del usuario:"))
+                     elimina_usuario(id_usuario)
+
+                 elif table == 2:
+                     id_pelicula = int(input("Id de la pelicula"))
+                     elimina_pelicula(id_pelicula)
+
+                 elif table == 3:
+                     id_renta = int(input("Id de la renta"))
+                     elimina_renta(id_renta)
+                
+                
+            elif eliminar == 2:
+                print("Tablas existentes en la base:")
+                print("(1) Tabla de Usuarios")
+                print("(2) Tabla de Peliculas")
+                print("(3) Tabla de Rentas")
+
+                tabla =0                
+                while(True):
+                    try:
+                        tabla = input("Elija la tabla del registro que se quiera cambiar el nombre (fecha en caso de Rentas):")
+                        if tabla not in [1,2,3]:
+                            raise ValueError
+                        else: break
+                    except ValueError:
+                        print("Ingrese una tabla valida")
+
+                 if table == 1:
+                     id_usuario = int(input("Id del usuario:"))
+                     elimina_todos_los_usuario()
+
+                 elif table == 2:
+                     id_pelicula = int(input("Id de la pelicula"))
+                     elimina_todas_las_peliculas()
+
+                 elif table == 3:
+                     id_renta = int(input("Id de la renta"))
+                     elimina_todas_las_rentas()                
