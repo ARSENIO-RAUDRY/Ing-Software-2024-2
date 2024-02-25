@@ -20,12 +20,12 @@ generos = ["Fantasia", "Terror Abuelita Miedo", "Cienciologia", "Shmunguss", "Pu
 
 # 1 Funcion que agrega un registro en cada tabla
 def inserta(connection):
-    with connection.cursor() as cursos:
+    with connection.cursor() as cursor:
         #Inserta Usuario
         nombre = random.choice(nombres)
         apellidopat = random.choice(apellidos)
         apellidomat = random.choice(apellidos)
-        correo = nombre + apellidomat + random.randint(0,999) + random.choice(correos)
+        correo = nombre + apellidomat + str(random.randint(0,999)) + random.choice(correos)
         password = nombre + "es lo maximo"
 
         cursor.execute("INSERT INTO `usuarios` (`nombre`,`apPat`,`apMat`,`password`,`email`,`superuser`) VALUES (%s,%s,%s,%s,%s,%s)",(nombre, apellidopat, apellidomat, password, correo, 0))
@@ -36,16 +36,16 @@ def inserta(connection):
         nombre_pelicula = random.choice(nombres_peliculas)
         genero_pelicula = random.choice(generos)
         duracion = random.randint(40, 240)
-        inventario = random.randint(15)
+        inventario = random.randint(1,15)
 
         cursor.execute("INSERT INTO `peliculas` (`nombre`,`genero`,`duracion`,`inventario`) VALUES (%s,%s,%s,%s)",(nombre_pelicula, genero_pelicula, duracion, inventario))
 
         id_pelicula  = cursor.lastrowid
 
         #Insertar Renta
-        fecha_renta = datetime.date(random.randint(2022,2023,2024), random.randinit(1,12), random.randint(1,28))
+        fecha_renta = datetime.date(random.randint(2022,2024), random.randint(1,12), random.randint(1,28))
 
-        cursor.execute("INSERT INTO `rentar` (`idUsuario`,`idPelicula`,`fecha_renta`,`dias_de_renta`,`estatus`) VALUES (%s,%s,%s,%s,%s)",(id_usuario, id_pelicula, fecha_renta, random.randinit(30,365), random.randinit(0,1)))
+        cursor.execute("INSERT INTO `rentar` (`idUsuario`,`idPelicula`,`fecha_renta`,`dias_de_renta`,`estatus`) VALUES (%s,%s,%s,%s,%s)",(id_usuario, id_pelicula, fecha_renta, random.randint(30,365), random.randint(0,1)))
     connection.commit()
 
 # 2 Filtra de la tabla Usuarios a aquellos cuyo alguno de sus apellidos termine con cierta cadena    
@@ -68,4 +68,15 @@ def elimina_rentas(connection):
         cursor.execute("DELETE FROM `rentar` WHERE `rentar` < %s", (datetime.date.today()-datetime.timedelta(days=3)))
     connection.commit()
 
-    
+if __name__ == "__main__":
+
+
+    for numero in [1,2,3,4,5,6,7,8,9,10]:
+        inserta(connection)
+
+    cadena_apellido = input("Inserta la terminacion de un apellido para ver a sus usuarios correspondientes")
+    filtra(connection,cadena_apellido)
+
+    nombre = input("Entra el nombre de la pelicula a cambiar")
+    nuevo_genero = input("Nuevo genero que tendra la pelicula")
+    cambia_genero(connection, nombre, nuevo_genero)

@@ -23,4 +23,4 @@ class Rentar(db.Model):
 
         
     def __str__(self):
-        return f'Id Rentar: {self.id_rentar}\nId Usuario: {self.id_usuario}\nId Pelicula: {self.id_pelicula}\nFecha de Renta:{self.fecha_renta}\n Dias de renta:{self.dias_de_renta}\nEstatus:{self.estatus}'
+        return f'Id Rentar: {self.idRentar}\nId Usuario: {self.idUsuario}\nId Pelicula: {self.idPelicula}\nFecha de Renta:{self.fecha_renta}\n Dias de renta:{self.dias_de_renta}\nEstatus:{self.estatus}'
