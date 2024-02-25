@@ -13,7 +13,7 @@ class Usuarios(db.Model):
     profile_picture = Column(LargeBinary)
     superuser= Column(Integer)
     
-    def __init__(self, nombre, apellido_pat, apellido_mat, password, email, profile_picture=None, superuser):
+    def __init__(self, nombre, apellido_pat, apellido_mat, password, email, profile_picture=None, superuser=None):
         self.nombre = nombre
         self.apellido_pat = apellido_pat
         self.apellido_mat = apellido_mat

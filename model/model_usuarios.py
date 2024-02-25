@@ -1,7 +1,7 @@
 from alchemyClasses.Usuarios import Usuarios
 from alchemyClasses import db
 
-def get_usuarios:
+def get_usuarios():
     for usuario in Usuarios.query.all():
         print(f'{usuario}\n')
 

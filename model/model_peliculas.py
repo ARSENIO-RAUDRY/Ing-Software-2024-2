@@ -1,7 +1,7 @@
 from alchemyClasses.Peliculas import Peliculas
 from alchemyClasses import db
 
-def get_peliculas:
+def get_peliculas():
     for pelicula in Peliculas.query.all():
         print(f'{pelicula}\n')
 

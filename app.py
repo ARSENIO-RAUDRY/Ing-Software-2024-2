@@ -2,11 +2,9 @@ from flask import Flask
 from sqlalchemy import and_, or_
 
 from alchemyClasses import db
-from alchemyClasses.Usuarios import Usuario
+from alchemyClasses.Usuarios import Usuarios
 from alchemyClasses.Peliculas import Peliculas
 from alchemyClasses.Rentar import Rentar
-
-from cryptoUtils.CryptoUtils import cipher
 
 from model.model_usuarios import *
 from model.model_peliculas import *
@@ -27,7 +25,6 @@ db.init_app(app)
 if __name__ == '__main__':
     with app.app_context():
         print(" __  __            _    _ \n|  \\/  |          | |  | |\n| \\  / | ___ _ __ | |  | |\n| |\\/| |/ _ \\ '_ \| |  | |\n| |  | |  __/ | | | |__| |\n|_|  |_|\___|_| |_|\\____/ ")
-
         print("Operaciones disponibles:")
         print("(1) Consultar los registros de una tabla")
         print("(2) Filtrar los registros de una tabla por Id")
@@ -38,7 +35,7 @@ if __name__ == '__main__':
 
         while(True):
             try:
-                operacion = input("Elija la operacion a realizar: ")
+                operacion = int(input("Elija la operacion a realizar: "))
                 if operacion not in [1,2,3,4]:
                     raise ValueError
                 else: break
@@ -56,22 +53,22 @@ if __name__ == '__main__':
 
             while(True):
                 try:
-                    tabla = input("Elija la tabla a consultar:")
+                    tabla = int(input("Elija la tabla a consultar:"))
                     if tabla not in [1,2,3]:
                         raise ValueError
                     else: break
                 except ValueError:
                     print("Ingrese una tabla valida")
 
-             if tabla == 1:
+            if tabla == 1:
                  print("Tabla de usuarios")
                  get_usuarios()
 
-             elif tabla == 2:
+            elif tabla == 2:
                  print("Tabla de peliculas")
                  get_peliculas()
 
-             elif tabla == 3:
+            elif tabla == 3:
                  print("Tabla de rentas")
                  get_rentas()
 
@@ -87,26 +84,26 @@ if __name__ == '__main__':
 
             while(True):
                 try:
-                    tabla = input("Elija la tabla del registro a consultar:")
+                    tabla = int(input("Elija la tabla del registro a consultar:"))
                     if tabla not in [1,2,3]:
                         raise ValueError
                     else: break
                 except ValueError:
                     print("Ingrese una tabla valida")
 
-             if tabla == 1:
-                 id = int(input("Inserte el ID del usuario"))
-                 print(f'{get_usuario{id}}\n')
+            if tabla == 1:
+                 id_usuario = int(input("Inserte el ID del usuario"))
+                 print(f'{get_usuario(id_usuario)}\n')
 
                  get_usuarios()
 
-             elif tabla == 2:
-                 id = int(input("Inserte el ID de la pelicula"))
-                 print(f'{get_pelicula{id}}\n')
+            elif tabla == 2:
+                 id_pelicula = int(input("Inserte el ID de la pelicula"))
+                 print(f'{get_pelicula(id_pelicula)}\n')
 
-             elif tabla == 3:
-                 id = int(input("Inserte el ID de la renta"))
-                 print(f'{get_renta{id}}\n')
+            elif tabla == 3:
+                 id_renta = int(input("Inserte el ID de la renta"))
+                 print(f'{get_renta(id_renta)}\n')
 
             
         elif operacion == 3:
@@ -119,14 +116,14 @@ if __name__ == '__main__':
 
             while(True):
                 try:
-                    tabla = input("Elija la tabla del registro que se quiera cambiar el nombre (fecha en caso de Rentas):")
+                    tabla = int(input("Elija la tabla del registro que se quiera cambiar el nombre (fecha en caso de Rentas):"))
                     if tabla not in [1,2,3]:
                         raise ValueError
                     else: break
                 except ValueError:
                     print("Ingrese una tabla valida")
 
-             if tabla == 1:
+            if tabla == 1:
                  id_usuario = int(input("Inserte el ID del usuario"))
                  nombre = input("Ingresa el nuevo nombre del Usuario:")
                  if cambia_nombre_usuario(id_usuario, nombre) == False:
@@ -135,7 +132,7 @@ if __name__ == '__main__':
                  else:
                      print("Nombre cambiado")
 
-             elif tabla == 2:
+            elif tabla == 2:
                  id_pelicula = int(input("Inserte el ID de la pelicula"))
                  nombre = input("Ingresa el nuevo nombre de la Pelicula:")
                  if cambia_nombre_pelicula(id_pelicula, nombre) == False:
@@ -144,7 +141,7 @@ if __name__ == '__main__':
                  else:
                      print("Nombre cambiado")
 
-             elif tabla == 3:
+            elif tabla == 3:
                  id_renta = int(input("Inserte el ID de la renta"))
                  nueva_fecha = genera_nueva_fecha()
                  if cambia_fecha(id_renta, nueva_fecha) == False:
@@ -179,22 +176,22 @@ if __name__ == '__main__':
                 tabla =0                
                 while(True):
                     try:
-                        tabla = input("Elija la tabla del registro que se quiera cambiar el nombre (fecha en caso de Rentas):")
+                        tabla = int(input("Elija la tabla del registro que se quiera cambiar el nombre (fecha en caso de Rentas):"))
                         if tabla not in [1,2,3]:
                             raise ValueError
                         else: break
                     except ValueError:
                         print("Ingrese una tabla valida")
 
-                 if table == 1:
+                if tabla == 1:
                      id_usuario = int(input("Id del usuario:"))
                      elimina_usuario(id_usuario)
 
-                 elif table == 2:
+                elif tabla == 2:
                      id_pelicula = int(input("Id de la pelicula"))
                      elimina_pelicula(id_pelicula)
 
-                 elif table == 3:
+                elif tabla == 3:
                      id_renta = int(input("Id de la renta"))
                      elimina_renta(id_renta)
                 
@@ -208,21 +205,21 @@ if __name__ == '__main__':
                 tabla =0                
                 while(True):
                     try:
-                        tabla = input("Elija la tabla del registro que se quiera cambiar el nombre (fecha en caso de Rentas):")
+                        tabla = int(input("Elija la tabla del registro que se quiera cambiar el nombre (fecha en caso de Rentas):"))
                         if tabla not in [1,2,3]:
                             raise ValueError
                         else: break
                     except ValueError:
                         print("Ingrese una tabla valida")
 
-                 if table == 1:
+                if tabla == 1:
                      id_usuario = int(input("Id del usuario:"))
                      elimina_todos_los_usuario()
 
-                 elif table == 2:
+                elif tabla == 2:
                      id_pelicula = int(input("Id de la pelicula"))
                      elimina_todas_las_peliculas()
 
-                 elif table == 3:
+                elif tabla == 3:
                      id_renta = int(input("Id de la renta"))
                      elimina_todas_las_rentas()                
