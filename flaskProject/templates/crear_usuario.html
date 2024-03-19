@@ -31,7 +31,7 @@
 	<input type="text" name="password" id="password" required>
 	<br>
 
-	<label for="email">Ingrese su constraseña:</label>
+	<label for="email">Ingrese su email:</label>
 	<input type="text" name="email" id="email" required>
 	<br>
 	
@@ -46,7 +46,7 @@
       {% for message in get_flashed_messages() %}
       <p>{{ message }}</p>
       {% endfor %}
-      {% endIf %}
+      {% endif %}
       
     </div>
 

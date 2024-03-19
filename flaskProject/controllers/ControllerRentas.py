@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, flash, url_for
+from flask import Blueprint, request, render_template, flash, url_for, redirect
 from alchemyClasses.Usuarios import Usuarios
 from alchemyClasses.Peliculas import Peliculas
 from alchemyClasses.Rentar import Rentar

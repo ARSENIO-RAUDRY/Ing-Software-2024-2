@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, flash, url_for
+from flask import Blueprint, request, render_template, flash, url_for, redirect
 from random import randint
 from alchemyClasses.Peliculas import Peliculas
 from alchemyClasses.Rentar import Rentar
@@ -66,7 +66,7 @@ def modificar_pelicula_id(id):
         flash('Pelicula modificada :D', 'success')
         return redirect(url_for('pelicula.ver_peliculas'))
 
-@pelicula_blueprint.route('/modificar', methods=['GET','POST'])
+@pelicula_blueprint.route('/eliminar', methods=['GET','POST'])
 def eliminar_pelicula():
     if request.method == 'POST':
         id_pelicula = request.form.get('id_pelicula')

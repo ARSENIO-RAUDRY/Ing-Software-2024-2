@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, flash, url_for
+from flask import Blueprint, request, render_template, flash, url_for, redirect
 from random import randint
 from alchemyClasses.Usuarios import Usuarios
 from alchemyClasses.Rentar import Rentar
@@ -25,11 +25,11 @@ def agregar_usuario():
 
         if not nombre or not apPat or not apMat or not password or not email:
             flash('Campos incompletos', 'error')
-            return redirect(url_for('usuario.agregar_usuario'))
+            return redirect(url_for('agregar_usuario'))
 
         if Usuarios.query.filter_by(email=email).first():
             flash('Email ya registrado', 'error')
-            return redirect(url_for('usuario.agregar_usuario'))
+            return render_template('crea_usuario.html')
         
         nuevo_usuario = Usuarios(nombre, apPat, apMat, password, email, superUser)
         db.session.add(nuevo_usuario)
@@ -52,7 +52,7 @@ def modificar_usuario_id(id):
 
     if not usuario:
         flash('Usuario no encontrado o ID invalido', 'error')
-        return render_template('ingresa_id_usuario')
+        return render_template('ingresa_id_usuario.html')
 
     if request.method == 'GET':
         return render_template('modificar_usuario.html', usuario=usuario)
@@ -78,7 +78,7 @@ def modificar_usuario_id(id):
         flash('Usuario modificado :D', 'success')
         return redirect(url_for('usuario.ver_usuarios'))
 
-@usuario_blueprint.route('/modificar', methods=['GET','POST'])
+@usuario_blueprint.route('/eliminar', methods=['GET','POST'])
 def eliminar_usuario():
     if request.method == 'POST':
         id_usuario = request.form.get('id_usuario')

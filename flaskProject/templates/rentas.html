@@ -29,15 +29,15 @@
 	</thead>
 	<tbody>
 	  {% for renta in rentas %}
-	  <tr {%if }>
+	  <tr>
 	    <td>{{renta.idRenta}}</td>
 	    <td>{{renta.idUsuario}}</td>
 	    <td>{{renta.idPelicula}}</td>
 	    <td>{{renta.fecha_renta}}</td>
 	    <td>{{renta.dias_de_renta}}</td>
-	    <td>{%if renta.estatus == 1%}{{"Devuelto"}}{% else %} {{"No devuelto"}}{% endif %}}</td>
+	    <td>{%if renta.estatus%}{{"Devuelto"}}{% else %} {{"No devuelto"}}{% endif %}</td>
 	  </tr>
-	  {% endfor}
+	  {% endfor %}
 	</tbody>
 	</table>
     </div>

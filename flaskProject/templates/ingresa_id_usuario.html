@@ -13,10 +13,10 @@
     </div>
 
     <div class = "main_body">
-      <form action="" method="post">
+      <form action="" method="POST">
 
-	<label for="idUsuario">Ingrese el Id del Usuario:</label>
-	<input type="text" name="idUsuario" id="idUsuario" required>
+	<label for="id_usuario">Ingrese el Id del Usuario:</label>
+	<input type="text" name="id_usuario" id="id_usuario" required>
 	<br>
 
 	<button type="submit">Enviar</button>
@@ -26,7 +26,7 @@
       {% for message in get_flashed_messages() %}
       <p>{{ message }}</p>
       {% endfor %}
-      {% endIf %}
+      {% endif %}
       
     </div>
 
