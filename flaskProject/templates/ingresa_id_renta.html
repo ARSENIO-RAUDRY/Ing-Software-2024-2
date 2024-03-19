@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Ingresa Id Renta</title>
+    <link rel="stylesheet" href="/assets/templates/estilos.css">
+  </head>
+
+  <body>
+
+    <div class = "Header">
+      <h1>Ingresa Id Renta</h1>
+    </div>
+
+    <div class = "main_body">
+      <form action="" method="post">
+
+	<label for="idRenta">Ingrese el Id del Renta:</label>
+	<input type="text" name="idRenta" id="idRenta" required>
+	<br>
+
+	<button type="submit">Enviar</button>
+      </form>
+
+      {% if get_flashed_messages() %}
+      {% for message in get_flashed_messages() %}
+      <p>{{ message }}</p>
+      {% endfor %}
+      {% endIf %}
+      
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Crear Pelicula</title>
+    <link rel="stylesheet" href="/assets/templates/estilos.css">
+  </head>
+
+  <body>
+
+    <div class = "Header">
+      <h1>Crear Pelicula</h1>
+    </div>
+
+    <div class = "main_body">
+      <form action="pelicula/agregar" method="post">
+
+	<label for="name">Ingrese el nombre:</label>
+	<input type="text" name="name" id="name" required>
+	<br>
+
+	<label for="genero">Ingrese el genero:</label>
+	<input type="text" name="genero" id="genero" required>
+	<br>
+
+	<label for="duracion">Ingrese la duracion en minutos:</label>
+	<input type="number" name="duracion" id="duracion" required>
+	<br>	
+
+	<label for="estatus">Ingrese la cantidad de copias disponibles:</label>
+	<input type="checkbox" id="estatus" required>
+	<br>
+
+	<button type="submit">Crear Pelicula</button>
+      </form>
+
+      {% if get_flashed_messages() %}
+      {% for message in get_flashed_messages() %}
+      <p>{{ message }}</p>
+      {% endfor %}
+      {% endIf %}
+      
+    </div>
+
+  </body>
+</html>

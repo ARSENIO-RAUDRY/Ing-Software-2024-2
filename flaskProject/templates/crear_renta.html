@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Crear Renta</title>
+    <link rel="stylesheet" href="/assets/templates/estilos.css">
+  </head>
+
+  <body>
+
+    <div class = "Header">
+      <h1>Crear Renta</h1>
+    </div>
+
+    <div class = "main_body">
+      <form action="renta/agregar" method="post">
+
+	<label for="idUsuario">Ingrese el Id del Usuario:</label>
+	<input type="text" name="idUsuario" id="idUsuario" required>
+	<br>
+
+	<label for="idPelicula">Ingrese el Id de la Pelicula:</label>
+	<input type="text" name="idPelicula" id="idPelicula" required>
+	<br>
+
+	<label for="fecha_renta">Ingrese la fecha de renta con forma YYYY-MM-DD:</label>
+	<input type="text" name="fecha_renta" id="fecha_renta" pattern="\d{4}-\d{2}-\d{2}" placeholder="YYYY-MM-DD" required>
+	<br>
+
+	<label for="dias_de_renta">Ingrese los dias en los que se renta la pelicula:</label>
+	<input type="number" name="dias_de_renta" id="dias_de_renta" required>
+	<br>	
+
+	<label for="estatus">Ha sido devuelta la renta:</label>
+	<input type="checkbox" id="estatus" required>
+	<br>
+
+	<button type="submit">Crear Pelicula</button>
+      </form>
+
+      {% if get_flashed_messages() %}
+      {% for message in get_flashed_messages() %}
+      <p>{{ message }}</p>
+      {% endfor %}
+      {% endIf %}
+      
+    </div>
+
+  </body>
+</html>

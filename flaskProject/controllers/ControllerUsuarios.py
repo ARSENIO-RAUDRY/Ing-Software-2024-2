@@ -95,9 +95,6 @@ def eliminar_usuario_id(id):
         flash('Usuario no encontrado o ID invalido', 'error')
         return render_template('ingresa_id_usuario')
 
-    if request.method == 'GET':
-        return render_template('eliminar_usuario.html', usuario=usuario)
-
     else:
         rentas_asociadas = Rentar.query.filter_by(idUsuario=id).first()
 

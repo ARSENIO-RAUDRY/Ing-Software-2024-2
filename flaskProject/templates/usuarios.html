@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Usuarios</title>
+    <link rel="stylesheet" href="/assets/templates/estilos.css">
+  </head>
+
+  <body>
+
+    <div class = "Header">
+      <h1>Usuarios</h1>
+    </div>
+
+    <div class = "main_body">
+
+      <table>
+	<thead>
+	  <tr>
+	    <th>Id</th>
+	    <th>Nombre</th>
+	    <th>Apellido Paterno</th>
+	    <th>Apellido Materno</th>
+	    <th>Email</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  {% for usuario in usuarios %}
+	  <tr>
+	    <td>{{usuario.idUsuario}}</td>
+	    <td>{{usuario.nombre}}</td>
+	    <td>{{usuario.apPat}}</td>
+	    <td>{{usuario.apMat}}</td>
+	    <td>{{usuario.email}}</td>
+	  </tr>
+	  {% endfor}
+	</tbody>
+      </table>
+    </div>
+
+  </body>
+</html>

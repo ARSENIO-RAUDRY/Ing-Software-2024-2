@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Crear Usuario</title>
+    <link rel="stylesheet" href="/assets/templates/estilos.css">
+  </head>
+
+  <body>
+
+    <div class = "Header">
+      <h1>Crear Usuario</h1>
+    </div>
+
+    <div class = "main_body">
+      <form action="usuario/agregar" method="post">
+
+	<label for="name">Ingrese su nombre:</label>
+	<input type="text" name="name" id="name" required>
+	<br>
+
+	<label for="apPat">Ingrese su apellido paterno:</label>
+	<input type="text" name="apPat" id="apPat" required>
+	<br>
+
+	<label for="apMat">Ingrese su apellido materno:</label>
+	<input type="text" name="apMat" id="apMat" required>
+	<br>	
+
+	<label for="password">Ingrese su constraseña:</label>
+	<input type="text" name="password" id="password" required>
+	<br>
+
+	<label for="email">Ingrese su constraseña:</label>
+	<input type="text" name="email" id="email" required>
+	<br>
+	
+	<label for="superUser">Es Super Usuario:</label>
+	<input type="checkbox" id="superUser" required>
+	<br>
+
+	<button type="sumbit">Crear Usuario</button>
+      </form>
+
+      {% if get_flashed_messages() %}
+      {% for message in get_flashed_messages() %}
+      <p>{{ message }}</p>
+      {% endfor %}
+      {% endIf %}
+      
+    </div>
+
+  </body>
+</html>

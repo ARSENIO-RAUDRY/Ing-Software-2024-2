@@ -83,9 +83,6 @@ def eliminar_pelicula_id(id):
         flash('Pelicula no encontrada o ID invalido', 'error')
         return render_template('ingresa_id_pelicula')
 
-    if request.method == 'GET':
-        return render_template('eliminar_pelicula.html', pelicula=pelicula)
-
     else:
         db.session.delete(pelicula)
         db.session.commit()

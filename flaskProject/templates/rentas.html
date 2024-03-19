@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Rentas</title>
+    <link rel="stylesheet" href="/assets/templates/estilos.css">
+  </head>
+
+  <body>
+
+    <div class = "Header">
+      <h1>Rentas</h1>
+    </div>
+
+    <div class = "main_body">
+
+      <table>
+	<thead>
+	  <tr>
+	    <th>Id Renta</th>
+	    <th>Id Usuario</th>
+	    <th>Id Pelicula</th>
+	    <th>Fecha de renta</th>
+	    <th>Dias de renta</th>
+	    <th>Estatus</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  {% for renta in rentas %}
+	  <tr {%if }>
+	    <td>{{renta.idRenta}}</td>
+	    <td>{{renta.idUsuario}}</td>
+	    <td>{{renta.idPelicula}}</td>
+	    <td>{{renta.fecha_renta}}</td>
+	    <td>{{renta.dias_de_renta}}</td>
+	    <td>{%if renta.estatus == 1%}{{"Devuelto"}}{% else %} {{"No devuelto"}}{% endif %}}</td>
+	  </tr>
+	  {% endfor}
+	</tbody>
+	</table>
+    </div>
+
+  </body>
+</html>

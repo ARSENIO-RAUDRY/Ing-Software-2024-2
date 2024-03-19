@@ -1,6 +1,6 @@
 from flask import Blueprint, request, render_template, flash, url_for
-from random import randint
-from alchemyClasses.Rentar import Rentar
+from alchemyClasses.Usuarios import Usuarios
+from alchemyClasses.Peliculas import Peliculas
 from alchemyClasses.Rentar import Rentar
 from alchemyClasses import db
 

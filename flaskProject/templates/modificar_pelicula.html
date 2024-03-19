@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Modificar Pelicula</title>
+    <link rel="stylesheet" href="/assets/templates/estilos.css">
+  </head>
+
+  <body>
+
+    <div class = "Header">
+      <h1>Modificar Pelicula</h1>
+    </div>
+
+    <div class = "main_body">
+      <form action="pelicula/modificar" method="post">
+
+	<label for="nombre">Ingrese su nombre:</label>
+	<input type="text" name="nombre" id="nombre" required>
+	<br>
+
+	<label for="genero">Genero:</label>
+	<input type="text" name="genero" id="genero"  required>
+	<br>
+
+	<label for="duracion">Ingrese la duracion:</label>
+	<input type="number" name="duracion" id="duracion" required>
+	<br>	
+
+	<label for="inventario">Ingrese las copias existentes en el inventario:</label>
+	<input type="number" name="inventario" id="inventario"  required>
+	<br>
+
+	<button type="sumbit">Modificar Pelicula</button>
+      </form>
+
+      {% if get_flashed_messages() %}
+      {% for message in get_flashed_messages() %}
+      <p>{{ message }}</p>
+      {% endfor %}
+      {% endIf %}
+      
+    </div>
+
+  </body>
+</html>
