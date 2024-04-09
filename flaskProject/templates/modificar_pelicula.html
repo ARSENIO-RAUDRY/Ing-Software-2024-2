@@ -16,22 +16,22 @@
       <form action="/pelicula/modificar" method="post">
 
 	<label for="nombre">Ingrese su nombre:</label>
-	<input type="text" name="nombre" id="nombre" required>
+	<input type="text"  id="nombre" name="nombre" required>
 	<br>
 
 	<label for="genero">Genero:</label>
-	<input type="text" name="genero" id="genero"  required>
+	<input type="text" id="genero" name="genero"  required>
 	<br>
 
 	<label for="duracion">Ingrese la duracion:</label>
-	<input type="number" name="duracion" id="duracion" required>
+	<input type="number" id="duracion" name="duracion" required>
 	<br>	
 
 	<label for="inventario">Ingrese las copias existentes en el inventario:</label>
 	<input type="number" name="inventario" id="inventario"  required>
 	<br>
 
-	<button type="sumbit">Modificar Pelicula</button>
+	<input type="submit" value="Modificar Pelicula">
       </form>
 
       {% if get_flashed_messages() %}

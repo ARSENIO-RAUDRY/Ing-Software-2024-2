@@ -36,10 +36,10 @@
 	<br>
 	
 	<label for="superUser">Es Super Usuario:</label>
-	<input type="checkbox" id="superUser" name="superUser" {% if usuario.superUser==1 %} checked {% endif %} required>
+	<input type="checkbox" id="superUser" name="superUser" {% if usuario.superUser==1 %} checked {% endif %}>
 	<br>
 
-	<button type="sumbit">Modificar Usuario</button>
+	<input type="submit" value="Modificar Usuario">
       </form>
 
       {% if get_flashed_messages() %}

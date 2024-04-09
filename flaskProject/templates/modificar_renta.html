@@ -16,10 +16,10 @@
       <form action="/renta/modificar" method="post">
 
 	<label for="estatus">Ha sido devuelta la renta:</label>
-	<input type="checkbox" id="estatus" name="estatus" {% if renta.estatus==1 %} checked {% endif %} required>
+	<input type="checkbox" id="estatus" name="estatus" {% if renta.estatus==1 %} checked {% endif %}>
 	<br>
 
-	<button type="sumbit">Modificar Renta</button>
+	<input type="submit" value="Modificar Renta">
       </form>
 
       {% if get_flashed_messages() %}
