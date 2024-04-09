@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
     <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <title>Crear Usuario</title>
   </head>
@@ -13,33 +13,33 @@
     </div>
 
     <div class = "main_body">
-      <form action="usuario/agregar" method="post">
+      <form action="/usuario/agregar" method="post">
 
-	<label for="name">Ingrese su nombre:</label>
-	<input type="text" name="name" id="name" required>
+	<label for="nombre">Ingrese su nombre:</label>
+	<input type="text" id="nombre" name="nombre" required>
 	<br>
 
 	<label for="apPat">Ingrese su apellido paterno:</label>
-	<input type="text" name="apPat" id="apPat" required>
+	<input type="text" id="apPat" name="apPat" required>
 	<br>
 
 	<label for="apMat">Ingrese su apellido materno:</label>
-	<input type="text" name="apMat" id="apMat" required>
+	<input type="text" id="apMat" name="apMat">
 	<br>	
 
 	<label for="password">Ingrese su constraseña:</label>
-	<input type="text" name="password" id="password" required>
+	<input type="password" id="password" name="password" required>
 	<br>
 
 	<label for="email">Ingrese su email:</label>
-	<input type="text" name="email" id="email" required>
+	<input type="email" id="email" name="email" required>
 	<br>
 	
 	<label for="superUser">Es Super Usuario:</label>
-	<input type="checkbox" id="superUser" required>
+	<input type="checkbox" id="superUser" name="superUser">
 	<br>
 
-	<button type="sumbit">Crear Usuario</button>
+	<input type="submit" value="Agregar Usuario">
       </form>
 
       {% if get_flashed_messages() %}

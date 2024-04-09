@@ -11,7 +11,7 @@ def ver_usuarios():
     usuarios = Usuarios.query.all()
     return render_template('usuarios.html', usuarios=usuarios)
 
-@usuario_blueprint.route('/agregar', methods=['GET','POST'])
+@usuario_blueprint.route('/agregar', methods=['GET', 'POST'])
 def agregar_usuario():
     if request.method == 'GET':
         return render_template('crear_usuario.html')
@@ -25,8 +25,8 @@ def agregar_usuario():
 
         if not nombre or not apPat or not apMat or not password or not email:
             flash('Campos incompletos', 'error')
-            return redirect(url_for('agregar_usuario'))
-
+            return redirect(url_for('usuario.agregar_usuario'))
+        
         if Usuarios.query.filter_by(email=email).first():
             flash('Email ya registrado', 'error')
             return render_template('crea_usuario.html')

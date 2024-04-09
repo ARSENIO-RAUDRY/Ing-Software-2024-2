@@ -13,25 +13,25 @@
     </div>
 
     <div class = "main_body">
-      <form action="pelicula/agregar" method="post">
+      <form action="/pelicula/agregar" method="post">
 
-	<label for="name">Ingrese el nombre:</label>
-	<input type="text" name="name" id="name" required>
+	<label for="nombre">Ingrese el nombre:</label>
+	<input type="text" id="nombre" name="nombre" required>
 	<br>
 
 	<label for="genero">Ingrese el genero:</label>
-	<input type="text" name="genero" id="genero" required>
+	<input type="text" id="genero" name="genero" required>
 	<br>
 
 	<label for="duracion">Ingrese la duracion en minutos:</label>
-	<input type="number" name="duracion" id="duracion" required>
+	<input type="number" id="duracion" name="duracion" required>
 	<br>	
 
-	<label for="estatus">Ingrese la cantidad de copias disponibles:</label>
-	<input type="checkbox" id="estatus" required>
+	<label for="inventario">Ingrese la cantidad de copias disponibles:</label>
+	<input type="number" id="inventario" name="inventario" required>
 	<br>
 
-	<button type="submit">Crear Pelicula</button>
+	<input type="submit" value="Crear Pelicula">
       </form>
 
       {% if get_flashed_messages() %}

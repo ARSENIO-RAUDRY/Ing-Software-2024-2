@@ -20,9 +20,9 @@ def agregar_renta():
         idPelicula = request.form['idPelicula']
         fecha_renta = request.form['fecha_renta']
         dias_de_renta = request.form['dias_de_renta']
-        estatus = 1 if request.form.get('estatus') else 0
+        estatus = True if request.form.get('estatus') else False
 
-        if not idUsuario or not idPelicula or not fecha_renta or not dias_de_renta or not estatus:
+        if not idUsuario or not idPelicula or not fecha_renta or not dias_de_renta:
             flash('Campos incompletos', 'error')
             return redirect(url_for('renta.agregar_renta'))
 

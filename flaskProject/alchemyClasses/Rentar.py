@@ -8,8 +8,8 @@ from alchemyClasses import Peliculas
 class Rentar(db.Model):
     __tablename__ = 'rentar'
     idRentar = Column(Integer,primary_key=True)
-    idUsuario = Column(Integer, ForeignKey('usuario.id_usuario'))
-    idPelicula = Column(Integer, ForeignKey('pelicula.id_pelicula'))
+    idUsuario = Column(Integer, ForeignKey('usuarios.idUsuario'))
+    idPelicula = Column(Integer, ForeignKey('peliculas.idPelicula'))
     fecha_renta = Column(DateTime, nullable=True)
     dias_de_renta = Column(Integer)
     estatus = Column(Integer)
