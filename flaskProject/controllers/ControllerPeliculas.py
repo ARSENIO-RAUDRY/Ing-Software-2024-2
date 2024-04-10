@@ -35,14 +35,14 @@ def agregar_pelicula():
 @pelicula_blueprint.route('/modificar', methods=['GET','POST'])
 def modificar_pelicula():
     if request.method == 'POST':
-        id_pelicula = request.form.get('id_pelicula')
-        return redirect(url_for('pelicula.modificar_pelicula_id', id=id_pelicula))
+        idPelicula = request.form.get('idPelicula')
+        return redirect(url_for('pelicula.modificar_pelicula_id', id=idPelicula))
 
     return render_template('ingresa_id_pelicula.html')
 
 @pelicula_blueprint.route('/modificar/<int:id>', methods=['GET, POST'])
 def modificar_pelicula_id(id):
-    pelicula = Pelicula.query.get.id(id)
+    pelicula = Peliculas.query.get(id)
 
     if not pelicula:
         flash('Pelicula no encontrada o ID invalido', 'error')
@@ -69,15 +69,15 @@ def modificar_pelicula_id(id):
 @pelicula_blueprint.route('/eliminar', methods=['GET','POST'])
 def eliminar_pelicula():
     if request.method == 'POST':
-        id_pelicula = request.form.get('id_pelicula')
-        return redirect(url_for('pelicula.eliminar_pelicula_id', id=id_pelicula))
+        idPelicula = request.form.get('idPelicula')
+        return redirect(url_for('pelicula.eliminar_pelicula_id', id=idPelicula))
 
     return render_template('ingresa_id_pelicula.html')
 
 
 @pelicula_blueprint.route('/eliminar/<int:id>', methods=['GET','POST'])
 def eliminar_pelicula_id(id):
-    pelicula = Pelicula.query.get.id(id)
+    pelicula = Peliculas.query.get(id)
 
     if not pelicula:
         flash('Pelicula no encontrada o ID invalido', 'error')

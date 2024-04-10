@@ -41,14 +41,14 @@ def agregar_usuario():
 @usuario_blueprint.route('/modificar', methods=['GET','POST'])
 def modificar_usuario():
     if request.method == 'POST':
-        id_usuario = request.form.get('id_usuario')
-        return redirect(url_for('usuario.modificar_usuario_id', id=id_usuario))
+        idUsuario = request.form.get('idUsuario')
+        return redirect(url_for('usuario.modificar_usuario_id', id=idUsuario))
 
     return render_template('ingresa_id_usuario.html')
 
 @usuario_blueprint.route('/modificar/<int:id>', methods=['GET, POST'])
 def modificar_usuario_id(id):
-    usuario = Usuario.query.get.id(id)
+    usuario = Usuarios.query.get(id)
 
     if not usuario:
         flash('Usuario no encontrado o ID invalido', 'error')
@@ -59,14 +59,14 @@ def modificar_usuario_id(id):
 
     elif request.method == 'POST':
 
-        usuario.nombre = request.form.get['nombre']
-        usuario.apPat = request.form.get['apPat']
-        usuario.apMat = request.form.get['apMat']
-        usuario.password = request.form.get['password']
+        usuario.nombre = request.form['nombre']
+        usuario.apPat = request.form['apPat']
+        usuario.apMat = request.form['apMat']
+        usuario.password = request.form['password']
         usuario.email = request.form['email']
         usuario.superUser = True if request.form.get('superUser') else False
 
-        if not usuario.nombre or not usuario.apPat or not usuario.apMat or not usuario.password or not email:
+        if not usuario.nombre or not usuario.apPat or not usuario.apMat or not usuario.password or not usuario.email:
             flash('Campos incompletos', 'error')
             return render_template('modificar_usuario.html', usuario=usuario)
         
@@ -81,19 +81,19 @@ def modificar_usuario_id(id):
 @usuario_blueprint.route('/eliminar', methods=['GET','POST'])
 def eliminar_usuario():
     if request.method == 'POST':
-        id_usuario = request.form.get('id_usuario')
-        return redirect(url_for('usuario.eliminar_usuario_id', id=id_usuario))
+        idUsuario = request.form.get('idUsuario')
+        return redirect(url_for('usuario.eliminar_usuario_id', id=idUsuario))
 
     return render_template('ingresa_id_usuario.html')
 
 
 @usuario_blueprint.route('/eliminar/<int:id>', methods=['GET','POST'])
 def eliminar_usuario_id(id):
-    usuario = Usuario.query.get.id(id)
+    usuario = Usuarios.query.get(id)
 
     if not usuario:
         flash('Usuario no encontrado o ID invalido', 'error')
-        return render_template('ingresa_id_usuario')
+        return render_template('ingresa_id_usuario.html')
 
     else:
         rentas_asociadas = Rentar.query.filter_by(idUsuario=id).first()
