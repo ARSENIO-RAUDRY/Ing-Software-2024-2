@@ -44,14 +44,14 @@ def agregar_renta():
 @renta_blueprint.route('/modificar', methods=['GET','POST'])
 def modificar_renta():
     if request.method == 'POST':
-        id_renta = request.form.get('id_renta')
-        return redirect(url_for('renta.modificar_renta_id', id=id_renta))
+        idRentar = request.form.get('idRentar')
+        return redirect(url_for('renta.modificar_renta_id', id=idRentar))
 
     return render_template('ingresa_id_renta.html')
 
-@renta_blueprint.route('/modificar/<int:id>', methods=['GET, POST'])
+@renta_blueprint.route('/modificar/<int:id>', methods=['GET', 'POST'])
 def modificar_renta_id(id):
-    renta = Renta.query.get.id(id)
+    renta = Rentar.query.get(id)
 
     if not renta:
         flash('Renta no encontrado o ID invalido', 'error')
