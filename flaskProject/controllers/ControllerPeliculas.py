@@ -40,7 +40,7 @@ def modificar_pelicula():
 
     return render_template('ingresa_id_pelicula.html')
 
-@pelicula_blueprint.route('/modificar/<int:id>', methods=['GET, POST'])
+@pelicula_blueprint.route('/modificar/<int:id>', methods=['GET', 'POST'])
 def modificar_pelicula_id(id):
     pelicula = Peliculas.query.get(id)
 
@@ -53,10 +53,10 @@ def modificar_pelicula_id(id):
 
     elif request.method == 'POST':
 
-        pelicula.nombre = request.form.get['nombre']
-        pelicula.genero = request.form.get['genero']
-        pelicula.duracion = request.form.get['duracion']
-        pelicula.inventario = request.form.get['inventario']
+        pelicula.nombre = request.form['nombre']
+        pelicula.genero = request.form['genero']
+        pelicula.duracion = request.form['duracion']
+        pelicula.inventario = request.form['inventario']
 
         if not pelicula.nombre or not pelicula.genero or not pelicula.duracion or not pelicula.inventario:
             flash('Campos incompletos', 'error')

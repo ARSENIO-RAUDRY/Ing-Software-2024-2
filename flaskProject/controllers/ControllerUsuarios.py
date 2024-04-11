@@ -46,7 +46,7 @@ def modificar_usuario():
 
     return render_template('ingresa_id_usuario.html')
 
-@usuario_blueprint.route('/modificar/<int:id>', methods=['GET, POST'])
+@usuario_blueprint.route('/modificar/<int:id>', methods=['GET', 'POST'])
 def modificar_usuario_id(id):
     usuario = Usuarios.query.get(id)
 
