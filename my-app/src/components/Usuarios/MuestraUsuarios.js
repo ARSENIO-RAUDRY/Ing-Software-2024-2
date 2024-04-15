@@ -1,6 +1,4 @@
 import React from "react";
-
-//import Card from '../UI/Card';
 import Usuario from "./Usuario/Usuario";
 //import './Alumnos.css';
 
