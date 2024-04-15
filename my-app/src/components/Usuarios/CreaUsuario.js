@@ -14,6 +14,7 @@ const CreaUsuario = (props) => {
 
     return (
         <div>
+	    <h1>Crea Nuevo Usuario</h1>
             <UsuarioForm onGuardarUsuario={guardaUsuarioHandler} />
         </div>
     )
